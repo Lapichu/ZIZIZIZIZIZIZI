@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PixelMotion - Soluciones Digitales Profesionales</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset básico */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f9fbfd;
+    color: #2c3e50;
+    line-height: 1.6;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #1a237e;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #82b1ff;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #c5cae9;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%; height: 2px;
+    background: #82b1ff;
+    left: 0; bottom: -6px;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    color: #82b1ff;
+  }
+
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+
+  main {
+    padding-top: 90px; /* para header fijo */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1a237e 0%, #82b1ff 100%);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 12px;
+    margin: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(24, 39, 119, 0.5);
+  }
+
+  .hero h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .btn-primary {
+    background: #82b1ff;
+    color: #1a237e;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(130, 177, 255, 0.5);
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background: #5472d3;
+    transform: scale(1.05);
+  }
+
+  /* Secciones */
+  section {
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto 4rem auto;
+  }
+
+  section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #1a237e;
+    text-align: center;
+  }
+
+  section p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    color: #34495e;
+  }
+
+  /* Grid para servicios y equipo */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+
+  .card img {
+    width: 100px;
+    margin-bottom: 1.2rem;
+  }
+
+  .card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: #283593;
+    margin-bottom: 1rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+    color: #555f6e;
+    line-height: 1.4;
+  }
+
+  /* Testimonios */
+  .testimonials {
+    background: #e8eaf6;
+    border-radius: 15px;
+    padding: 3rem 2rem;
+  }
+
+  .testimonial-item {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: #37474f;
+    position: relative;
+  }
+
+  .testimonial-item::before {
+    content: "“";
+    font-size: 3rem;
+    color: #7986cb;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+  }
+
+  .testimonial-author {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-style: normal;
+    color: #1a237e;
+    text-align: right;
+  }
+
+  /* Contacto */
+  form.contact-form {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  form.contact-form input,
+  form.contact-form textarea {
+    padding: 1rem;
+    border: 1.5px solid #cfd8dc;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+  }
+
+  form.contact-form input:focus,
+  form.contact-form textarea:focus {
+    border-color: #1a237e;
+    outline: none;
+  }
+
+  form.contact-form button {
+    background: #1a237e;
+    color: white;
+    padding: 1.2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  form.contact-form button:hover,
+  form.contact-form button:focus {
+    background: #3949ab;
+    transform: scale(1.05);
+  }
+
+  /* Footer */
+  footer {
+    background: #1a237e;
+    color: #c5cae9;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  footer .social-icons {
+    margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  footer .social-icons a {
+    color: #c5cae9;
+    font-size: 1.6rem;
+    transition: color 0.3s ease;
+  }
+
+  footer .social-icons a:hover {
+    color: #82b1ff;
+  }
+
+  /* Animación para imagen hover */
+  .interactive-img {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  .interactive-img:hover,
+  .interactive-img:focus {
+    transform: rotate(-5deg) scale(1.08);
+    box-shadow: 0 8px 15px rgba(130,177,255,0.4);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      gap: 10px;
+      padding: 1rem;
+    }
+    nav {
+      gap: 1rem;
+    }
+    .hero h2 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>PixelMotion</h1>
+  <nav aria-label="Navegación principal">
+    <a href="#acerca">Acerca</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introducción principal">
+    <h2>Soluciones Digitales Profesionales para tu Negocio</h2>
+    <p>Potenciamos tu presencia en línea con diseño, innovación y tecnología 3D de vanguardia.</p>
+    <button class="btn-primary" onclick="alert('¡Gracias por tu interés!')">Contáctanos</button>
+  </section>
+
+  <section id="acerca" tabindex="0">
+    <h2>Acerca de Nosotros</h2>
+    <p>PixelMotion es una empresa líder en innovación digital, especializada en diseño web, modelado 3D y desarrollo de aplicaciones móviles. Nuestro equipo está comprometido con la calidad, la creatividad y la excelencia.</p>
+  </section>
+
+  <section id="servicios" tabindex="0">
+    <h2>Nuestros Servicios</h2>
+    <div class="grid-3">
+      <article class="card" tabindex="0" aria-label="Diseño Web">
+        <img src="https://img.icons8.com/ios-filled/100/1a237e/web-design.png" alt="Icono de diseño web" class="interactive-img" />
+        <h3>Diseño Web</h3>
+        <p>Desarrollamos sitios web modernos, responsivos y optimizados para todos los dispositivos, con experiencia de usuario excepcional.</p>
+      </article>
+      <article class="card" tabindex="0" aria-label="Modelado 3D y animaciones">
+        <img src="https://img.icons8.com/ios-filled/100/1a237e/3d-object.png" alt="Icono de modelado 3D" class="interactive-img" />
+        <h3>Modelado 3D</h3>
+        <p>Generamos animaciones 3D profesionales para presentaciones, videojuegos y publicidad, destacando tu producto con tecnología avanzada.</p>
+      </article>
+      <article class="card" tabindex="0" aria-label="Aplicaciones móviles">
+        <img src="https://img.icons8.com/ios-filled/100/1a237e/smartphone.png" alt="Icono de aplicaciones móviles" class="interactive-img" />
+        <h3>Apps Móviles</h3>
+        <p>Diseñamos y desarrollamos apps para iOS y Android con interfaces intuitivas y alto rendimiento, adaptadas a tus necesidades.</p>
+      </article>
+    </div>
+  </section>
+  
+  <section id="equipo" tabindex="0">
+    <h2>Conoce a Nuestro Equipo</h2>
+    <div class="grid-3">
+      <article class="card" tabindex="0" aria-label="Juan Pérez, CEO">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Foto de Juan Pérez" class="interactive-img" />
+        <h3>Juan Pérez</h3>
+        <p>CEO & Fundador — Visionario y líder con más de 10 años de experiencia en tecnología y negocios digitales.</p>
+      </article>
+      <article class="card" tabindex="0" aria-label="María Gómez, Directora de Diseño">
+        <img src="https://randomuser.me/api/portraits/women/48.jpg" alt="Foto de María Gómez" class="interactive-img" />
+        <h3>María Gómez</h3>
+        <p>Directora de Diseño — Especialista en UX/UI y creatividad que asegura la mejor experiencia para el usuario.</p>
+      </article>
+      <article class="card" tabindex="0" aria-label="Carlos Ruiz, Desarrollador Senior">
+        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Foto de Carlos Ruiz" class="interactive-img" />
+        <h3>Carlos Ruiz</h3>
+        <p>Desarrollador Senior — Experto en desarrollo web y móvil, garantiza soluciones técnicas robustas y eficientes.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="testimonios" tabindex="0">
+    <h2>Lo Que Dicen Nuestros Clientes</h2>
+    <div class="testimonials">
+      <div class="testimonial-item" tabindex="0">
+        <p>"PixelMotion transformó nuestra página web y nos ayudó a triplicar las ventas online. Su profesionalismo es incomparable."</p>
+        <div class="testimonial-author">— Sofía Martínez, CEO de TecnoSoft</div>
+      </div>
+      <div class="testimonial-item" tabindex="0">
+        <p>"El equipo escuchó nuestras necesidades y entregó un producto final que superó nuestras expectativas. Muy recomendados."</p>
+        <div class="testimonial-author">— Luis Fernández, Emprendedor</div>
+      </div>
+      <div class="testimonial-item" tabindex="0">
+        <p>"Excelente atención, soluciones innovadoras y resultados medibles. Trabajar con PixelMotion fue un placer."</p>
+        <div class="testimonial-author">— Ana López, Marketing Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" tabindex="0">
+    <h2>Contacto</h2>
+    <form class="contact-form" action="#" method="POST" aria-label="Formulario de contacto">
+      <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Nombre" required />
+      <input type="email" name="email" placeholder="Tu email" aria-label="Correo electrónico" required />
+      <textarea name="mensaje" rows="5" placeholder="Tu mensaje" aria-label="Mensaje" required></textarea>
+      <button type="submit">Enviar Mensaje</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 PixelMotion. Todos los derechos reservados.</p>
+  <div class="social-icons" aria-label="Redes sociales">
+    <a href="#" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener"><svg fill="currentColor" height="24" width="24" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.125v-3.622h3.125v-2.672c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.244l-1.92.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.294h6.116c.73 0 1.324-.593 1.324-1.324v-21.35c0-.732-.594-1.325-1.325-1.325z"/></svg></a>
+    <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener"><svg fill="currentColor" height="24" width="24" viewBox="0 0 24 24"><path d="M24 4.557a9.836 9.836 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.196 4.916 4.916 0 00-8.372 4.482 13.941 13.941 0 01-10.125-5.138 4.916 4.916 0 001.523 6.555 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.93 4.93 0 01-2.224.085 4.917 4.917 0 004.588 3.417"/></svg></a>
+  </div>
+</footer>
+
+</body>
+</html>

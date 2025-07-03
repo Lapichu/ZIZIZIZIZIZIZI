@@ -1,0 +1,15 @@
+Carrera: Diseño Multimedial
+Materia: Diseño y Programación Web I
+Año: 2025
+Cuatrimestre: Segundo
+Comisión: DMM3AV
+Turno: Mañana
+
+Integrantes:
+- Apellido: Alvarez, Nombre: Juan
+- Apellido: García, Nombre: Lucía
+- Apellido: Pérez, Nombre: Tomás
+
+Docente: Nombre del profesor
+Entrega: Segundo Parcial
+URL del sitio: https://mi-sitio-ejemplo.com
